@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>INVENTORY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/inventory-stylesheet.css}">
+  </head>
+  <body>
+    <div class="topnav">
+      <a th:href="@{/}">Form</a>
+      <a th:href="@{/inventory}" class="active">Inventory</a>
+    </div>
+    <div class="alert success" th:if="${status} == 'success'">
+      You successfully submitted the item!
+    </div>
+    <div class="alert" th:if="${status} == 'failed'">
+      <strong>You failed to submit the item.</strong>
+    </div>
+    <div class="container">
+      <table>
+        <tr class="head">
+          <th>Category</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Order Date</th>
+          <th></th>
+        </tr>
+        <tr th:each="item: ${items}">
+          <td th:text="${item.category}"></td>
+          <td th:text="${item.name}"></td>
+          <td th:text="${#numbers.formatCurrency(item.price)}"></td>
+          <td th:text="${#numbers.formatCurrency(item.discount)}"></td>
+          <td type="date" th:text="${#dates.format(item.date, 'yyyy-mm-dd')}"></td>
+          <td>
+            <a href="" role="button" style="color: white; background-color: 263238;" class="table-button" th:href="@{/(id = ${item.id})}">Update</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

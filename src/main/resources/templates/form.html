@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{form-stylesheet.css}">
+  </head>
+  <body>
+    <div class="topnav">
+      <a th:href="@{/}" class="active">Form</a>
+      <a class="active" th:href="@{/inventory}">Inventory</a>
+    </div>
+    <div class="container">
+      <h2>Global Superstore</h2>
+      <form method="post" th:object="${item}" th:action="@{/submitItem}">
+        <select class="select" th:field="*{category}" id="">
+          <option style="color:blue" value="">Choose Category</option>
+          <option th:each="category: ${categories}" th:text="${category}" th:value="${category}"></option>
+        </select>
+        <input type="text" th:field="*{name}" placeholder="Name">
+        <input type="text" th:field="*{price}" class="half" placeholder="Price">
+        <input type="text" class="half" th:field="*{discount}" placeholder="Discount">
+        <h4>Order Date</h4>
+        <input type="date" th:field="*{date}" style="color: black;">
+        <input type="hidden" th:field="*{id}">
+        <input type="submit" value="Submit Item">
+      </form>
+    </div>
+  </body>
+</html>
