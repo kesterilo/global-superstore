@@ -1,4 +1,4 @@
-package com.project.globalsuperstore;
+package com.projects.globalsuperstore;
 
 import java.util.Date;
 import java.util.UUID;

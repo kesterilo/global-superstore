@@ -1,4 +1,4 @@
-package com.project.globalsuperstore;
+package com.projects.globalsuperstore;
 
 public class Constants {
   public static final int NOT_FOUND = -10000;
